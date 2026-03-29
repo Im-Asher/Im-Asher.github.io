@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>什么是Prompt Engineering - Asher Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Asher Blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Asher Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="1.什么是Prompt EngineeringPrompt Engineering（提示工程）是指设计和优化输入给AI模型的提示（Prompt），以引导模型生成更准确、相关、有用的输出的技术和实践。随着大语言模型（LLM）如GPT-4、Claude等的普及，Prompt Engineering已成为与AI高效交互的核心技能。 简单来说，Prompt Engineering就是“如何与AI对话”的"><meta property="og:type" content="blog"><meta property="og:title" content="什么是Prompt Engineering"><meta property="og:url" content="https://im-asher.github.io/2026/03/29/prompt-engineering/"><meta property="og:site_name" content="Asher Blog"><meta property="og:description" content="1.什么是Prompt EngineeringPrompt Engineering（提示工程）是指设计和优化输入给AI模型的提示（Prompt），以引导模型生成更准确、相关、有用的输出的技术和实践。随着大语言模型（LLM）如GPT-4、Claude等的普及，Prompt Engineering已成为与AI高效交互的核心技能。 简单来说，Prompt Engineering就是“如何与AI对话”的"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://im-asher.github.io/paper.jpeg"><meta property="article:published_time" content="2026-03-29T06:21:30.000Z"><meta property="article:modified_time" content="2026-03-29T06:39:58.858Z"><meta property="article:author" content="Asher"><meta property="article:tag" content="AI"><meta property="article:tag" content="提示工程"><meta property="article:tag" content="GPT"><meta property="article:tag" content="人工智能"><meta property="article:tag" content="大语言模型"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://im-asher.github.io/paper.jpeg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://im-asher.github.io/2026/03/29/prompt-engineering/"},"headline":"什么是Prompt Engineering","image":[],"datePublished":"2026-03-29T06:21:30.000Z","dateModified":"2026-03-29T06:39:58.858Z","author":{"@type":"Person","name":"Asher"},"publisher":{"@type":"Organization","name":"Asher Blog","logo":{"@type":"ImageObject","url":"https://im-asher.github.io/img/logo.svg"}},"description":"1.什么是Prompt EngineeringPrompt Engineering（提示工程）是指设计和优化输入给AI模型的提示（Prompt），以引导模型生成更准确、相关、有用的输出的技术和实践。随着大语言模型（LLM）如GPT-4、Claude等的普及，Prompt Engineering已成为与AI高效交互的核心技能。 简单来说，Prompt Engineering就是“如何与AI对话”的"}</script><link rel="canonical" href="https://im-asher.github.io/2026/03/29/prompt-engineering/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Asher Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2026-03-29T06:21:30.000Z" title="3/29/2026, 2:21:30 PM">2026-03-29</time></span><span class="level-item">Updated&nbsp;<time dateTime="2026-03-29T06:39:58.858Z" title="3/29/2026, 2:39:58 PM">2026-03-29</time></span><span class="level-item">16 minutes read (About 2388 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">什么是Prompt Engineering</h1><div class="content"><p><img src="/paper.jpeg" alt="prompt"></p>
+<h2 id="1-什么是Prompt-Engineering"><a href="#1-什么是Prompt-Engineering" class="headerlink" title="1.什么是Prompt Engineering"></a>1.什么是Prompt Engineering</h2><p>Prompt Engineering（提示工程）是指设计和优化输入给AI模型的提示（Prompt），以引导模型生成更准确、相关、有用的输出的技术和实践。随着大语言模型（LLM）如GPT-4、Claude等的普及，Prompt Engineering已成为与AI高效交互的核心技能。</p>
+<p>简单来说，Prompt Engineering就是“如何与AI对话”的学问。一个好的提示可以显著提升AI回答的质量，而一个糟糕的提示可能导致无关、错误甚至有害的输出。</p>
+<p>提示工程不仅适用于文本生成，也广泛应用于图像生成（如DALL-E、Midjourney）、代码生成、数据分析等多个AI领域。它融合了心理学、语言学和人机交互的知识，是一门跨学科的实践艺术。</p>
+<h2 id="2-为什么需要Prompt-Engineering"><a href="#2-为什么需要Prompt-Engineering" class="headerlink" title="2.为什么需要Prompt Engineering"></a>2.为什么需要Prompt Engineering</h2><p>尽管现代AI模型已经非常强大，但它们并非全知全能。模型的输出质量高度依赖于输入提示的质量。以下是需要专门研究Prompt Engineering的几个关键原因：</p>
+<ol>
+<li><p><strong>提升输出质量与准确性</strong>：精心设计的提示可以引导模型生成更准确、更相关、更符合预期的答案，减少“幻觉”和无关内容。</p>
+</li>
+<li><p><strong>降低使用门槛</strong>：好的Prompt Engineering可以让非技术用户也能高效利用AI，无需深入了解模型内部原理。</p>
+</li>
+<li><p><strong>提高效率与成本效益</strong>：通过优化提示，可以用更少的交互次数获得所需结果，节省时间与API调用成本。</p>
+</li>
+<li><p><strong>解锁高级功能</strong>：许多模型的高级能力（如链式思考、角色扮演、多步推理）需要通过特定提示结构才能激活。</p>
+</li>
+<li><p><strong>适应不同场景</strong>：不同任务（创作、分析、编程、设计）需要不同的提示策略，Prompt Engineering提供了系统化的方法。</p>
+</li>
+<li><p><strong>减少偏见与有害输出</strong>：恰当的提示可以约束模型行为，降低生成有害、偏见或不安全内容的概率。</p>
+</li>
+</ol>
+<p>总之，Prompt Engineering是释放AI潜力的关键，是将“能用”的AI转变为“好用”的AI的桥梁。</p>
+<h2 id="3-如何设计Prompt"><a href="#3-如何设计Prompt" class="headerlink" title="3.如何设计Prompt"></a>3.如何设计Prompt</h2><h3 id="3-1-设计原则"><a href="#3-1-设计原则" class="headerlink" title="3.1 设计原则"></a>3.1 设计原则</h3><p>设计高效的提示需要遵循一些核心原则，这些原则有助于最大化AI模型的能力：</p>
+<ul>
+<li><p><strong>清晰明确</strong>：提示应清晰、无歧义，明确指定期望的输出格式、长度、风格等。避免模糊的表述。</p>
+</li>
+<li><p><strong>提供充足上下文</strong>：给予模型完成任务所需的背景信息。上下文不足可能导致模型基于错误假设生成答案。</p>
+</li>
+<li><p><strong>分步思考（Chain-of-Thought）</strong>：对于复杂问题，鼓励模型“一步一步思考”，展示推理过程，这能显著提高准确率。</p>
+</li>
+<li><p><strong>角色扮演（Role Playing）</strong>：让模型扮演特定角色（如专家、顾问、助手），可以引导其采用相应的语言风格和知识范围。</p>
+</li>
+<li><p><strong>示例引导（Few-shot Learning）</strong>：提供少量输入-输出示例，帮助模型理解任务模式，特别适用于格式固定的任务。</p>
+</li>
+<li><p><strong>迭代优化</strong>：提示设计是一个迭代过程。根据模型输出调整提示，逐步逼近最优效果。</p>
+</li>
+<li><p><strong>平衡约束与自由度</strong>：过于严格的约束可能限制模型创造力，过于宽松则可能导致偏离目标。需要根据任务找到平衡点。</p>
+</li>
+<li><p><strong>考虑模型特性</strong>：不同模型（GPT-4、Claude、Gemini等）对提示的敏感度不同，需针对具体模型微调策略。</p>
+</li>
+</ul>
+<h3 id="3-2-结构化Prompt"><a href="#3-2-结构化Prompt" class="headerlink" title="3.2 结构化Prompt"></a>3.2 结构化Prompt</h3><p>结构化Prompt通过明确的格式和组件组织提示内容，使模型更容易理解任务要求。常见的结构化方法包括：</p>
+<p><strong>1. 角色-任务-格式模板</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">你是一位资深[角色]。</span><br><span class="line">请完成以下任务：[任务描述]。</span><br><span class="line">输出格式要求：[格式说明]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 分隔符与区块</strong><br>使用分隔符（如<code>---</code>、<code>&quot;&quot;&quot;</code>、<code>&lt;&gt;</code>）划分不同部分，避免指令混淆。</p>
+<p><strong>3. XML风格标签</strong><br>用标签标注不同指令部分，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;system&gt;</span><br><span class="line">你是一位编程助手，擅长Python代码优化。</span><br><span class="line">&lt;/system&gt;</span><br><span class="line">&lt;user&gt;</span><br><span class="line">请优化以下代码：[代码片段]</span><br><span class="line">&lt;/user&gt;</span><br><span class="line">&lt;instructions&gt;</span><br><span class="line">输出优化后的代码，并解释修改原因。</span><br><span class="line">&lt;/instructions&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. 上下文-指令-示例结构</strong></p>
+<ul>
+<li><strong>上下文</strong>：提供背景信息</li>
+<li><strong>指令</strong>：明确具体任务</li>
+<li><strong>示例</strong>：展示期望的输出格式</li>
+</ul>
+<p><strong>5. 多轮对话结构</strong><br>对于复杂任务，设计多轮交互流程，每轮逐步细化要求。</p>
+<p>结构化Prompt的优点：</p>
+<ul>
+<li>提高指令清晰度</li>
+<li>减少歧义</li>
+<li>便于复用和维护</li>
+<li>支持复杂任务分解</li>
+</ul>
+<p>选择哪种结构取决于任务复杂度、模型能力和使用场景。通常从简单模板开始，根据需要逐步增加结构复杂度。</p>
+<h3 id="3-3-Prompt-样例"><a href="#3-3-Prompt-样例" class="headerlink" title="3.3 Prompt 样例"></a>3.3 Prompt 样例</h3><p>下面是一些实际可用的Prompt样例，展示了不同场景下的应用：</p>
+<h4 id="样例1：文本摘要"><a href="#样例1：文本摘要" class="headerlink" title="样例1：文本摘要"></a>样例1：文本摘要</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请将以下文章摘要为200字以内的中文概要，突出三个关键点。</span><br><span class="line"></span><br><span class="line">文章内容：[在此粘贴长文本]</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例2：代码生成与优化"><a href="#样例2：代码生成与优化" class="headerlink" title="样例2：代码生成与优化"></a>样例2：代码生成与优化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">你是一位资深Python开发工程师。请优化以下代码，提高其可读性和性能，并添加适当注释。</span><br><span class="line"></span><br><span class="line">代码：</span><br><span class="line">```python</span><br><span class="line">[原始代码]</span><br></pre></td></tr></table></figure>
+
+<p>优化要求：</p>
+<ol>
+<li>遵循PEP8规范</li>
+<li>使用更高效的算法或数据结构（如适用）</li>
+<li>添加函数和关键逻辑的注释</li>
+<li>输出优化后的完整代码</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">#### 样例3：数据分析报告</span><br></pre></td></tr></table></figure>
+<p>你是一位数据分析师。基于以下数据集，请：</p>
+<ol>
+<li>计算销售额的月度趋势</li>
+<li>找出销量最高的三个产品类别</li>
+<li>识别可能的异常值</li>
+<li>用Markdown表格呈现关键统计指标</li>
+</ol>
+<p>数据集：[数据描述或示例]<br>输出格式：包含分析结果、可视化建议和业务建议的报告。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 样例4：创意写作</span><br></pre></td></tr></table></figure>
+<p>请以“未来城市”为主题，写一篇800字左右的科幻短篇小说。</p>
+<p>要求：</p>
+<ul>
+<li>主角是一名AI伦理研究员</li>
+<li>包含至少一个技术伦理冲突</li>
+<li>结尾留有悬念</li>
+<li>语言风格：简洁有力，带有些许冷峻感</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 样例5：角色扮演咨询</span><br></pre></td></tr></table></figure>
+<p>假设你是一位经验丰富的职业规划导师。我将提供我的背景信息，请你：</p>
+<ol>
+<li>分析我的优势与不足</li>
+<li>建议适合的职业发展方向</li>
+<li>提供未来3年的具体行动计划</li>
+</ol>
+<p>我的背景：[个人背景描述]</p>
+<pre><code>
+这些样例展示了如何通过明确角色、任务、格式和约束来设计有效的Prompt。实际使用时，可根据具体需求调整细节。
+
+
+
+## 4.如何使用Prompt
+
+掌握了Prompt设计原则和结构后，如何在实践中有效使用Prompt呢？以下是一些实用的方法和工具：
+
+### 4.1 直接交互场景
+- **聊天界面**：在ChatGPT、Claude等聊天界面中直接输入设计好的Prompt。
+- **API调用**：通过OpenAI API、Anthropic API等编程接口发送结构化Prompt。
+- **浏览器插件**：使用Prompt扩展（如AIPRM）快速应用预置模板。
+
+### 4.2 开发集成
+- **提示模板库**：建立团队内部的Prompt模板库，便于共享和复用。
+- **配置化系统**：将常用Prompt参数化，通过配置快速生成不同变体。
+- **A/B测试**：对同一任务设计多个Prompt版本，通过测试选择效果最佳的。
+
+### 4.3 工作流整合
+- **内容创作**：将Prompt集成到写作、编辑流程中，辅助生成初稿、润色、翻译等。
+- **编程开发**：在IDE中使用代码生成、解释、调试相关的Prompt。
+- **数据分析**：通过Prompt自动生成SQL查询、数据可视化建议、报告摘要。
+
+### 4.4 最佳实践
+1. **从小处开始**：先针对简单任务设计Prompt，逐步扩展到复杂场景。
+2. **记录与复盘**：保存成功的Prompt及其输出，建立个人知识库。
+3. **持续迭代**：根据模型更新和任务变化，定期优化Prompt。
+4. **关注上下文窗口**：注意模型的最大上下文长度，合理规划提示长度。
+5. **安全与伦理**：避免设计可能产生有害、偏见或侵权内容的Prompt。
+
+### 4.5 工具推荐
+- **Prompt优化工具**：如PromptPerfect、Promptmetheus
+- **模板管理**：Notion、Obsidian的Prompt模板库
+- **协作平台**：PromptBase、Promptist等社区分享平台
+
+通过系统化的使用方法，Prompt Engineering将成为你日常工作中有力的生产力工具。
+
+
+
+
+
+</code></pre>
+</div><div class="article-licensing box"><div class="licensing-title"><p>什么是Prompt Engineering</p><p><a href="https://im-asher.github.io/2026/03/29/prompt-engineering/">https://im-asher.github.io/2026/03/29/prompt-engineering/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Asher</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2026-03-29</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2026-03-29</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/AI/">AI</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/">提示工程</a><a class="link-muted mr-2" rel="tag" href="/tags/GPT/">GPT</a><a class="link-muted mr-2" rel="tag" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">大语言模型</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/02/26/how-to-build-valid-sql-tool-in-agent/"><span class="level-item">Langchain 构建SQL Agent中遇到的坑</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card" id="comments"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/avatar.jpg" alt="Asher"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Asher</p><p class="is-size-6 is-block">AI Engineer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shenzhen, Guangdong</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives/"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories/"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags/"><p class="title">9</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Im-Asher" target="_blank" rel="me noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/Im-Asher"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E5%B7%A5%E7%A8%8B%E5%A4%8D%E7%9B%98/"><span class="level-start"><span class="level-item">工程复盘</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98/"><span class="level-start"><span class="level-item">论文复盘</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-03-29T06:21:30.000Z">2026-03-29</time></p><p class="title"><a href="/2026/03/29/prompt-engineering/">什么是Prompt Engineering</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-02-26T14:13:25.000Z">2026-02-26</time></p><p class="title"><a href="/2026/02/26/how-to-build-valid-sql-tool-in-agent/">Langchain 构建SQL Agent中遇到的坑</a></p><p class="categories"><a href="/categories/%E5%B7%A5%E7%A8%8B%E5%A4%8D%E7%9B%98/">工程复盘</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-02-25T13:19:19.000Z">2026-02-25</time></p><p class="title"><a href="/2026/02/25/Rethinking-Memory-in-LLM-based-Agents/">Rethinking Memory in LLM based Agents - Representations, Operations, and Emerging Topics</a></p><p class="categories"><a href="/categories/%E8%AE%BA%E6%96%87%E5%A4%8D%E7%9B%98/">论文复盘</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-02-20T06:33:42.097Z">2026-02-20</time></p><p class="title"><a href="/2026/02/20/hello-world/">Hello World</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2026/03/"><span class="level-start"><span class="level-item">March 2026</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2026/02/"><span class="level-start"><span class="level-item">February 2026</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/AI/"><span class="tag">AI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Agent/"><span class="tag">Agent</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GPT/"><span class="tag">GPT</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Langchain/"><span class="tag">Langchain</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Memory/"><span class="tag">Memory</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQL-Agent/"><span class="tag">SQL-Agent</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"><span class="tag">人工智能</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/"><span class="tag">大语言模型</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B/"><span class="tag">提示工程</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Asher Blog" height="28"></a><p class="is-size-7"><span>&copy; 2026 Asher</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
